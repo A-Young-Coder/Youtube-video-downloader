@@ -1,0 +1,4 @@
+2024-08-24 12:57:07,059 - download.download_video - INFO - Video Title: Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion)
+2024-08-24 12:57:08,260 - download.download_video - INFO - Downloaded file format: mp4
+2024-08-24 12:57:38,261 - utilities.delete_raw_files - INFO - Deleting raw files...
+2024-08-24 12:57:38,261 - utilities.zip_output_files - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
