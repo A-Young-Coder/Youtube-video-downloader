@@ -1,6 +1,11 @@
+"""
+Contains the Flask application that will listen for incoming requests
+"""
+
 import os
 import zipfile
 from flask import Flask, request, jsonify, send_file
+from constants.constants import *
 from main import main
 
 app = Flask(__name__)
@@ -12,7 +17,7 @@ def download_videos():
     Download videos from the provided URLs and resolutions
     """
     data = request.json
-    save_path = data.get("save_path", "/Users/atharva/Downloads")
+    save_path = SAVE_PATH
     urls = data.get("urls")
 
     # Check if the list of URLs is provided
@@ -66,4 +71,4 @@ def download_videos():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host=LOCALHOST, port=PORT)

@@ -2,3 +2,19 @@
 2024-08-24 12:57:08,260 - download.download_video - INFO - Downloaded file format: mp4
 2024-08-24 12:57:38,261 - utilities.delete_raw_files - INFO - Deleting raw files...
 2024-08-24 12:57:38,261 - utilities.zip_output_files - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
+2024-08-24 13:28:31,437 - download.download_video - INFO - Video Title: Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion)
+2024-08-24 13:28:33,025 - download.download_video - INFO - Downloaded file format: mp4
+2024-08-24 13:28:50,775 - utilities.delete_raw_files - INFO - Deleting raw files...
+2024-08-24 13:28:50,777 - utilities.zip_output_files - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
+2024-08-24 13:38:57,295 - download.download_video - INFO - Video Title: Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion)
+2024-08-24 13:38:57,756 - download.download_video - INFO - Downloaded file format: mp4
+2024-08-24 13:39:29,178 - utilities.delete_raw_files - INFO - Deleting raw files...
+2024-08-24 13:39:29,179 - utilities.zip_output_files - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
+2024-08-24 14:07:47,393 - create_logger.logger - INFO - Video Title: Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion)
+2024-08-24 14:07:47,393 - create_logger.logger - INFO - Video Title: Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion)
+2024-08-24 14:07:47,667 - create_logger.logger - INFO - Downloaded file format: mp4
+2024-08-24 14:07:47,667 - create_logger.logger - INFO - Downloaded file format: mp4
+2024-08-24 14:08:12,109 - create_logger.logger - INFO - Deleting raw files...
+2024-08-24 14:08:12,109 - create_logger.logger - INFO - Deleting raw files...
+2024-08-24 14:08:12,110 - create_logger.logger - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
+2024-08-24 14:08:12,110 - create_logger.logger - INFO - Creating ZIP file: /Users/atharva/Downloads/Jason Derulo, Frozy & Tomo - From The Islands (Lyrics)(Kompa Passion).zip
