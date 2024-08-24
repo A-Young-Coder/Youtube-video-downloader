@@ -7,8 +7,6 @@ from utilities.zip_output_files import zip_output_files
 from download.download_video import download_video
 from download.download_audio import download_audio
 
-from create_logger.logger import create_logger
-
 def main(url, save_path, res):
     """
     Combine all the functions to download, convert, and merge the video and audio files. Central function to call all the other functions. \n
@@ -18,8 +16,6 @@ def main(url, save_path, res):
 
     returns: zip_filename: str: The path to the created ZIP file
     """
-
-    create_logger()
 
     video_title, file_format = download_video(url, save_path, res)
 

@@ -6,10 +6,12 @@ import os
 import zipfile
 from flask import Flask, request, jsonify, send_file
 from constants.constants import *
+from create_logger.logger import create_logger
 from main import main
 
-app = Flask(__name__)
+create_logger()
 
+app = Flask(__name__)
 
 @app.route("/download", methods=["POST"])
 def download_videos():
