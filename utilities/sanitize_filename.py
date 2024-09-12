@@ -1,3 +1,7 @@
+"""
+Module to sanitize the filename
+"""
+
 from create_logger.logger import LOGGER
 
 logger = LOGGER

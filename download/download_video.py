@@ -1,13 +1,14 @@
+"""
+This module is used to download the video from the given URL
+"""
 from pytubefix.cli import on_progress
 from pytubefix import YouTube
-import logging
-import os
 from create_logger.logger import LOGGER
 
 logger = LOGGER
 
 
-def download_video(url, save_path, res):
+def download_video(url, save_path, res, video_title):
     """
     Download the video from the given URL \n
     params: url: str: The URL of the video to download \n
@@ -20,7 +21,6 @@ def download_video(url, save_path, res):
 
     yt = YouTube(url, on_progress_callback=on_progress)
 
-    video_title = yt.title
     logger.info(f"Video Title: {video_title}")
 
     for idx, i in enumerate(yt.streams):
@@ -35,4 +35,4 @@ def download_video(url, save_path, res):
     file_format = mime_type.split("/")[-1]
     logger.info(f"Downloaded file format: {file_format}")
 
-    return video_title, file_format
+    return file_format

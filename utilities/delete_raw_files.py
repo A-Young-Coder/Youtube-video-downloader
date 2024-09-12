@@ -1,7 +1,8 @@
+"""
+This module deletes the raw video and audio files after the final video has been created
+"""
 import os
 from utilities.sanitize_filename import sanitize_filename
-import logging
-import os
 from create_logger.logger import LOGGER
 
 logger = LOGGER
@@ -23,7 +24,7 @@ def delete_raw_files(save_path, video_title, file_format):
     glitch_video_path_sanitized = sanitize_filename(glitch_video_path)
     file_format_video_path = f"{save_path}/{video_title}.{file_format}"
 
-    logger.info(f"Deleting raw files...")
+    logger.info("Deleting raw files...")
     if os.path.exists(video_path):
         os.remove(video_path)
     if os.path.exists(audio_path):

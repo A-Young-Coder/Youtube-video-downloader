@@ -5,7 +5,8 @@ Contains the Flask application that will listen for incoming requests
 import os
 import zipfile
 from flask import Flask, request, jsonify, send_file
-from constants.constants import *
+from constants.constants import SAVE_PATH, WIFIHOST, PORT
+
 from create_logger.logger import create_logger
 from main import main
 
@@ -36,6 +37,8 @@ def download_videos():
     for item in urls:
         url = item.get("url")
         resolution = item.get("resolution")
+        file_type = item.get("file_type")
+        # Process the download based on the format
 
         # Check if the URL and resolution are provided
         if not url or not resolution:
@@ -44,7 +47,7 @@ def download_videos():
 
         # Download and process the video
         try:
-            zip_filename = main(url, save_path, resolution)
+            zip_filename = main(url, save_path, resolution, file_type)
             zip_files.append(zip_filename)
             results.append({"url": url, "status": "Download and processing completed"})
         except Exception as e: # Catch all exceptions

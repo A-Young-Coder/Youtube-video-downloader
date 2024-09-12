@@ -1,6 +1,7 @@
+"""
+Module to download the audio from the given URL
+"""
 import yt_dlp as youtube_dl
-import logging
-import os
 from create_logger.logger import LOGGER
 
 logger = LOGGER
@@ -13,6 +14,7 @@ def download_audio(url, save_path, video_title):
     params: save_path: str: The path to save the downloaded files
     """
 
+    logger.info(f"Video Title: {video_title}")
     logger.debug(f"Downloading audio of url: {url}...")
     ydl_opts = {
         "format": "bestaudio/best",

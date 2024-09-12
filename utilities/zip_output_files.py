@@ -1,7 +1,8 @@
+"""
+This module contains the function to create a ZIP file containing the output file
+"""
 import os
 import zipfile
-import logging
-import os
 from create_logger.logger import LOGGER
 
 logger = LOGGER

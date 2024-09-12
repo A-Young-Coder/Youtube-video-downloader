@@ -1,3 +1,7 @@
+"""
+This module contains the code to create a LOGGER for the application
+"""
+
 import logging
 import os
 from constants.constants import LOG_DIR, LOG_LEVEL, LOG_FILE_NAME
@@ -6,7 +10,7 @@ def create_logger():
     """
     Create a LOGGER to log the application events
     """
-    
+
     # Create a LOGGER
     logger = logging.getLogger(__name__)
     logger.setLevel(LOG_LEVEL)
