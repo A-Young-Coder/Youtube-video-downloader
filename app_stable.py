@@ -4,8 +4,9 @@ Contains the Flask application that will listen for incoming requests
 
 import os
 import zipfile
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, session, render_template, redirect, url_for
 from constants.constants import SAVE_PATH, WIFIHOST, PORT
+from werkzeug.utils import secure_filename
 
 from create_logger.logger import create_logger
 from main import main
@@ -13,9 +14,10 @@ from main import main
 create_logger()
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "hjhjsdahhds"
 
-@app.route("/download", methods=["POST"])
-def download_videos():
+@app.route("/download", methods=["POST", "GET"])
+def download(url = "", resolution = "", file_type = ""):
     """
     Download videos from the provided URLs and resolutions
     """
@@ -75,6 +77,54 @@ def download_videos():
         mimetype="application/zip",
     )
 
+@app.route("/home", methods=["POST", "GET"])
+def home():
+    """
+    creating home page for website
+    """
+    url = None
+    resolution = None
+    file_type = None
+    session.clear()
+    if request.method == "POST":
+        url = request.form.get("url")
+        resolution = request.form.get("resolution")
+        file_type = request.form.get("file_type")
+
+        # Ensure the variables are not None
+        if not url:
+            return "URL is required", 400
+        if not resolution:
+            return "Resolution is required", 400
+        if not file_type:
+            return "File type is required", 400
+
+    session["url"] = url
+    session["resolution"] = resolution
+    session["file_type"] = file_type
+
+    return render_template("home.html")
+
+
+@app.route("/download_web", methods=["POST", "GET"])
+def download_web():
+    url = request.form.get("url")
+    resolution = request.form.get("res")
+    file_type = request.form.get("format")
+    save_path = SAVE_PATH
+    zip_files = []
+    results = []
+
+    zip_filename = None  # Initialize zip_filename
+
+    try:
+        zip_filename = main(url, save_path, resolution, file_type)
+        zip_files.append(zip_filename)
+        results.append({"url": url, "status": "Download and processing completed"})
+    except Exception as e:
+        results.append({"url": url, "status": f"Error: {str(e)}"})
+
+    return render_template("download.html")
 
 if __name__ == "__main__":
     app.run(debug=True, host=WIFIHOST, port=PORT)
