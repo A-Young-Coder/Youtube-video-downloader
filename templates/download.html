@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-        We did it! We have successfully downloaded the video. <a href="{{ url_for('home') }}">Go back</a>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1>We did it! We have successfully downloaded the video.</h1>
+        <a href="{{ url_for('download_file', filename=filename) }}">Download {{ filename }}</a>
+        <br>
+        <a href="{{ url_for('home') }}">Go back</a>
+    </div>
+</body>
+
 </html>

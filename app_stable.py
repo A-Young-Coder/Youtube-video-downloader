@@ -4,7 +4,7 @@ Contains the Flask application that will listen for incoming requests
 
 import os
 import zipfile
-from flask import Flask, request, jsonify, send_file, session, render_template, redirect, url_for
+from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template, redirect, url_for
 from constants.constants import SAVE_PATH, WIFIHOST, PORT
 from werkzeug.utils import secure_filename
 
@@ -15,6 +15,8 @@ create_logger()
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "hjhjsdahhds"
+UPLOAD_FOLDER = "./templates/upload"  # Specify the directory to save uploaded files
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 @app.route("/download", methods=["POST", "GET"])
 def download(url = "", resolution = "", file_type = ""):
@@ -124,7 +126,14 @@ def download_web():
     except Exception as e:
         results.append({"url": url, "status": f"Error: {str(e)}"})
 
-    return render_template("download.html")
+    return render_template("download.html", filename="pa3.txt")
+
+
+@app.route("/upload/<filename>")
+def download_file(filename):
+    return send_from_directory(
+        app.config["UPLOAD_FOLDER"], filename, as_attachment=True
+    )
 
 if __name__ == "__main__":
     app.run(debug=True, host=WIFIHOST, port=PORT)
