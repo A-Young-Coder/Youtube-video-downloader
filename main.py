@@ -8,6 +8,7 @@ from converters.merge_video_and_audio import merge_video_audio
 from utilities.delete_raw_files import delete_raw_files
 from utilities.zip_output_files import zip_output_files
 from utilities.get_video_title import get_video_title
+from utilities.file_mover import file_mover
 
 from download.download_video import download_video
 from download.download_audio import download_audio
@@ -37,8 +38,10 @@ def main(url, save_path, res, file_type):
         delete_raw_files(save_path, video_title, file_format)
 
     elif file_type == "audio":
+        print("Downloading audio")
         download_audio(url, save_path, video_title)
 
-    zip_filename = zip_output_files(save_path, video_title)
+    zip_filename = zip_output_files(save_path, video_title, file_type)
+    print(f"zipfile: {zip_filename}")
 
     return zip_filename

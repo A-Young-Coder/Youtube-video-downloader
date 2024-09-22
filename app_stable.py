@@ -5,8 +5,9 @@ Contains the Flask application that will listen for incoming requests
 import os
 import zipfile
 from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template, redirect, url_for
-from constants.constants import SAVE_PATH, WIFIHOST, PORT
+from constants.constants import SAVE_PATH, WIFIHOST, PORT, FRONT_END_SAVE_PATH
 from werkzeug.utils import secure_filename
+from utilities.file_mover import file_mover
 
 from create_logger.logger import create_logger
 from main import main
@@ -117,20 +118,23 @@ def download_web():
     zip_files = []
     results = []
 
-    zip_filename = None  # Initialize zip_filename
+    zip_filename = ""  # Initialize zip_filename
 
     try:
         zip_filename = main(url, save_path, resolution, file_type)
+        # replace Save path with empty string
+        zip_filename = zip_filename.replace(SAVE_PATH, "")
+        zip_filename = os.path.normpath(zip_filename)
         zip_files.append(zip_filename)
         results.append({"url": url, "status": "Download and processing completed"})
-    except Exception as e:
+    except Exception as e:  # Catch all exceptions
         results.append({"url": url, "status": f"Error: {str(e)}"})
 
-    return render_template("download.html", filename="pa3.txt")
+    return render_template("download.html", filename=zip_filename)
 
 
 @app.route("/upload/<filename>")
-def download_file(filename):
+def upload_file(filename):
     return send_from_directory(
         app.config["UPLOAD_FOLDER"], filename, as_attachment=True
     )
