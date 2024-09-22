@@ -4,7 +4,7 @@ Contains the Flask application that will listen for incoming requests
 
 import os
 import zipfile
-from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template, redirect, url_for
+from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template
 from constants.constants import SAVE_PATH, WIFIHOST, PORT, FRONT_END_SAVE_PATH
 from werkzeug.utils import secure_filename
 from utilities.file_mover import file_mover
@@ -15,7 +15,7 @@ from main import main
 create_logger()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "hjhjsdahhds"
+app.config["SECRET_KEY"] = "myseceretkey"  # Set the secret key for the session
 UPLOAD_FOLDER = "./templates/upload"  # Specify the directory to save uploaded files
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
