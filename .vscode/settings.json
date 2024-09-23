@@ -3,6 +3,7 @@
         "myseceretkey",
         "pytubefix",
         "werkzeug",
-        "WIFIHOST"
+        "WIFIHOST",
+        "zipf"
     ]
 }

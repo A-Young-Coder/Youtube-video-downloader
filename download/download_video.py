@@ -25,10 +25,10 @@ def download_video(url, save_path, res, video_title):
 
     for idx, i in enumerate(yt.streams):
         if i.resolution == res:
-            print(idx)
-            print(i.resolution)
+            logger.info(idx)
+            logger.info(i.resolution)
             break
-    print(yt.streams[idx])
+    logger.info(yt.streams[idx])
     yt.streams[idx].download(output_path=save_path)
 
     mime_type = yt.streams[idx].mime_type

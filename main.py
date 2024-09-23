@@ -12,6 +12,9 @@ from utilities.get_video_title import get_video_title
 from download.download_video import download_video
 from download.download_audio import download_audio
 
+from create_logger.logger import LOGGER
+
+logger = LOGGER
 
 def main(url, save_path, res, file_type):
     """
@@ -37,10 +40,10 @@ def main(url, save_path, res, file_type):
         delete_raw_files(save_path, video_title, file_format)
 
     elif file_type == "audio":
-        print("Downloading audio")
+        logger.debug("Downloading audio file...")
         download_audio(url, save_path, video_title)
 
     zip_filename = zip_output_files(save_path, video_title, file_type)
-    print(f"zipfile: {zip_filename}")
+    logger.debug(f"zipfile: {zip_filename}")
 
     return zip_filename

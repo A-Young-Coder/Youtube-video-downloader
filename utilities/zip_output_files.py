@@ -16,7 +16,7 @@ def zip_output_files(save_path, video_title, file_type):
     returns: str: The path to the created ZIP file
     """
     zip_filename = os.path.join(save_path, f"{video_title}.zip")
-    print(f"in zip_putpzip_filename: {zip_filename}")
+    logger.debug(f"zip_filename: {zip_filename}")
     if file_type == "video":
         video_filename = os.path.join(f"{save_path}/{video_title}_merged.mp4")
 

@@ -1,6 +1,7 @@
+"""Main server file for the web application"""
+
 import os
 import subprocess
-import logging
 from create_logger.logger import LOGGER
 
 logger = LOGGER
@@ -27,7 +28,7 @@ def merge_video_audio(save_path, video_title):
         return
 
     # Construct the FFmpeg command to merge video and audio
-    logger.debug(f"Merging video and audio files...")
+    logger.debug("Merging video and audio files...")
     command = [
         "ffmpeg",
         "-i",

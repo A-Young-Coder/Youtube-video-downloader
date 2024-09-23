@@ -5,9 +5,7 @@ Contains the Flask application that will listen for incoming requests
 import os
 import zipfile
 from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template
-from constants.constants import SAVE_PATH, WIFIHOST, PORT, FRONT_END_SAVE_PATH
-from werkzeug.utils import secure_filename
-from utilities.file_mover import file_mover
+from constants.constants import SAVE_PATH, WIFIHOST, PORT
 
 from create_logger.logger import create_logger
 from main import main
@@ -111,6 +109,9 @@ def home():
 
 @app.route("/download_web", methods=["POST", "GET"])
 def download_web():
+    """
+    Provides download functionality for the website
+    """
     url = request.form.get("url")
     resolution = request.form.get("res")
     file_type = request.form.get("format")
@@ -135,6 +136,9 @@ def download_web():
 
 @app.route("/upload/<filename>")
 def upload_file(filename):
+    """
+    Upload the file to the server
+    """
     return send_from_directory(
         app.config["UPLOAD_FOLDER"], filename, as_attachment=True
     )
