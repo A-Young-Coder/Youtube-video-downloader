@@ -1,3 +1,7 @@
+"""
+Converter to convert the downloaded WebM video to MP4 format
+"""
+
 import subprocess
 from utilities.sanitize_filename import sanitize_filename
 from create_logger.logger import LOGGER

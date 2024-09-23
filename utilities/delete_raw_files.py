@@ -4,6 +4,7 @@ This module deletes the raw video and audio files after the final video has been
 import os
 from utilities.sanitize_filename import sanitize_filename
 from create_logger.logger import LOGGER
+from constants.constants import DOWNLOADS_PATH
 
 logger = LOGGER
 
@@ -24,7 +25,14 @@ def delete_raw_files(save_path, video_title, file_format):
     glitch_video_path_sanitized = sanitize_filename(glitch_video_path)
     file_format_video_path = f"{save_path}/{video_title}.{file_format}"
 
-    logger.info("Deleting raw files...")
+    video_path_downloads = f"{DOWNLOADS_PATH}/{video_title}_no_audio.mp4"
+    audio_path_downloads = f"{DOWNLOADS_PATH}/{video_title}.mp3"
+    webm_video_path_downloads = f"{DOWNLOADS_PATH}/{video_title}.webm"
+    glitch_video_path_downloads = f"{DOWNLOADS_PATH}/{video_title}.mp4"
+    glitch_video_path_sanitized_downloads = sanitize_filename(glitch_video_path)
+    file_format_video_path_downloads = f"{DOWNLOADS_PATH}/{video_title}.{file_format}"
+
+    logger.debug("Deleting raw files...")
     if os.path.exists(video_path):
         os.remove(video_path)
     if os.path.exists(audio_path):
@@ -37,3 +45,17 @@ def delete_raw_files(save_path, video_title, file_format):
         os.remove(glitch_video_path_sanitized)
     if os.path.exists(file_format_video_path):
         os.remove(file_format_video_path)
+
+    # Removing files from downloads folder
+    if os.path.exists(video_path_downloads):
+        os.remove(video_path_downloads)
+    if os.path.exists(audio_path_downloads):
+        os.remove(audio_path_downloads)
+    if os.path.exists(webm_video_path_downloads):
+        os.remove(webm_video_path_downloads)
+    if os.path.exists(glitch_video_path_downloads):
+        os.remove(glitch_video_path_downloads)
+    if os.path.exists(glitch_video_path_sanitized_downloads):
+        os.remove(glitch_video_path_sanitized_downloads)
+    if os.path.exists(file_format_video_path_downloads):
+        os.remove(file_format_video_path_downloads)

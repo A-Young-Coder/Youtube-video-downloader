@@ -3,7 +3,8 @@ Contains all necessary constants that will be utilized in the application
 """
 
 SAVE_PATH = "/Users/atharva/Documents/Youtube-video-downloader/templates/upload/"
-FRONT_END_SAVE_PATH = "./upload/"
+DOWNLOADS_PATH = "/Users/atharva/Downloads/"
+UPLOAD_FOLDER = "./templates/upload"
 
 LOCALHOST = "127.0.0.1"
 VPNHOST = "100.96.1.4"

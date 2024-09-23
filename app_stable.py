@@ -5,16 +5,15 @@ Contains the Flask application that will listen for incoming requests
 import os
 import zipfile
 from flask import Flask, request, jsonify, send_file, send_from_directory, session, render_template
-from constants.constants import SAVE_PATH, WIFIHOST, PORT
 
+from constants.constants import SAVE_PATH, WIFIHOST, PORT, UPLOAD_FOLDER
 from create_logger.logger import create_logger
 from main import main
 
 create_logger()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "myseceretkey"  # Set the secret key for the session
-UPLOAD_FOLDER = "./templates/upload"  # Specify the directory to save uploaded files
+app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY", "default_secret_key")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 @app.route("/download", methods=["POST", "GET"])
@@ -119,7 +118,7 @@ def download_web():
     zip_files = []
     results = []
 
-    zip_filename = ""  # Initialize zip_filename
+    zip_filename = ""
 
     try:
         zip_filename = main(url, save_path, resolution, file_type)

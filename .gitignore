@@ -1,0 +1,9 @@
+# Ignore all files in the upload directory
+/templates/upload/*
+
+# Other common ignores
+*.log
+*.pyc
+__pycache__/
+.env
+.DS_Store
