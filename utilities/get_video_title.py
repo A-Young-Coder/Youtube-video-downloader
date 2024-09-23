@@ -9,6 +9,10 @@ from create_logger.logger import LOGGER
 logger = LOGGER
 
 def get_video_title(url):
+    """
+    Get the title of the video from the URL \n
+    params: url: str: The URL of the video \n
+    """
     yt = YouTube(url, on_progress_callback=on_progress)
 
     video_title = yt.title
