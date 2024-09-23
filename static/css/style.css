@@ -3,3 +3,8 @@
     initial-value: 0deg;
     inherits: false;
 }
+
+.light-text {
+    /* text color should be light */
+    color: #f0f0f0;
+}

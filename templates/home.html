@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube Video Downloader</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <style>
@@ -16,19 +17,21 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+
     body::before {
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Black tint with 50% opacity */
+        background-color: rgba(0, 0, 0, 0.7);
+        /* Black tint with 50% opacity */
         z-index: -1;
     }
 
     .translucent-form {
-        background-color: rgba(0, 0, 0, 0.50);
+        background-color: rgba(0, 0, 0, 0.393);
         /* White background with 80% opacity */
         border-radius: 10px;
         /* Optional: rounded corners */
@@ -68,14 +71,16 @@
         text-align: center;
         border-radius: 10px;
         position: relative;
+        background: #3c3e44;
     }
 
-    .card::after, .card::before {
+    .card::after,
+    .card::before {
         content: '';
         position: absolute;
         height: 100%;
         width: 100%;
-        background-image: conic-gradient(from var(--angle), #45daff, #0ac1f8, #0ae0f8, #45daff, #0ae0f8, #0ae0f8);
+        background-image: conic-gradient(from var(--angle), #ffffff, #0ac1f8, #ffffff, #45daff, #ffffff, #0ae0f8, #ffffff);
         top: 50%;
         left: 50%;
         translate: -50% -50%;
@@ -99,28 +104,39 @@
             --angle: 360deg;
         }
     }
+
+    .light-text {
+        /* text color should be light */
+        color: #f0f0f0;
+    }
 </style>
 
-<body>
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-        <div class="card p-4 translucent-form" style="width: 100%; max-width: 400px;">
-            <h1 class="card-title text-center" style="border: none;">Youtube Video Downloader</h1>
-            <form action="{{ url_for('download_web') }}" method="post" class="form-group">
-                <div class="form-group">
-                    <label for="url">Youtube Video URL</label>
-                    <input type="text" name="url" id="url" class="translucent-select form-control"
-                        placeholder="Enter Youtube Video URL" required />
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card p-4 translucent-form" style="width: 100%; max-width: 400px;">
+        <h1 class="card-title text-center light-text" style="border: none;">Youtube Video Downloader</h1>
+        <br>
+        <form action="{{ url_for('download_web') }}" method="post" class="form-group">
+            <div class="form-group form-floating mb-3">
+                <input type="text" name="url" id="url" class="translucent-select form-control light-text"
+                    placeholder="Enter Youtube Video URL" required />
+                <label class="light-text" for="url">Youtube Video URL</label>
+            </div>
+            <div class="form-group row g-3">
+                <div class="col-auto">
+                    <label class="light-text col-form-label" for="format">Format</label>
                 </div>
-                <div class="form-group">
-                    <label for="format">Format</label>
-                    <select name="format" id="format" class="translucent-select form-control" required>
+                <div class="col-auto">
+                    <select name="format" id="format" class="translucent-select form-control light-text"
+                        required>
                         <option value="audio">audio</option>
                         <option value="video">video</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="resolution">Resolution</label>
-                    <select name="res" id="resolution" class="translucent-select form-control" required>
+                <div class="col-auto">
+                    <label class="light-text col-form-label" for="resolution">Resolution</label>
+                </div>
+                <div class="col-auto">
+                    <select name="res" id="resolution" class="translucent-select form-control light-text" required>
                         <option value="144p">144p</option>
                         <option value="240p">240p</option>
                         <option value="360p">360p</option>
@@ -131,14 +147,20 @@
                         <option value="2160p">2160p</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Download</button>
-            </form>
-        </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block w-100">Download</button>
+        </form>
     </div>
+</div>
 </body>
 <!-- Include Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
 
 </html>
