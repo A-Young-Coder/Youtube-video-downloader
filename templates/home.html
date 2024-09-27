@@ -109,15 +109,20 @@
         /* text color should be light */
         color: #f0f0f0;
     }
+
+    .border-color {
+        border-color: #4A5056; /* Replace with your desired color */
+    }
 </style>
 
+<!--74 80 86-->
 <div class="container vh-100 d-flex justify-content-center align-items-center">
     <div class="card p-4 translucent-form" style="width: 100%; max-width: 400px;">
         <h1 class="card-title text-center light-text" style="border: none;">Youtube Video Downloader</h1>
         <br>
         <form action="{{ url_for('download_web') }}" method="post" class="form-group">
             <div class="form-group form-floating mb-3">
-                <input type="text" name="url" id="url" class="translucent-select form-control light-text"
+                <input type="text" name="url" id="url" class="translucent-select form-control border-color light-text"
                     placeholder="Enter Youtube Video URL" required />
                 <label class="light-text" for="url">Youtube Video URL</label>
             </div>
@@ -126,7 +131,7 @@
                     <label class="light-text col-form-label" for="format">Format</label>
                 </div>
                 <div class="col-auto">
-                    <select name="format" id="format" class="translucent-select form-control light-text"
+                    <select name="format" id="format" class="border-color translucent-select form-control light-text"
                         required>
                         <option value="audio">audio</option>
                         <option value="video">video</option>
@@ -136,7 +141,7 @@
                     <label class="light-text col-form-label" for="resolution">Resolution</label>
                 </div>
                 <div class="col-auto">
-                    <select name="res" id="resolution" class="translucent-select form-control light-text" required>
+                    <select name="res" id="resolution" class="border-color translucent-select form-control light-text" required>
                         <option value="144p">144p</option>
                         <option value="240p">240p</option>
                         <option value="360p">360p</option>
