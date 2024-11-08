@@ -77,7 +77,7 @@ def download(url = "", resolution = "", file_type = ""):
         mimetype="application/zip",
     )
 
-@app.route("/home", methods=["POST", "GET"])
+@app.route("/", methods=["POST", "GET"])
 def home():
     """
     creating home page for website
@@ -143,4 +143,4 @@ def upload_file(filename):
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, host=WIFIHOST, port=PORT)
+    app.run(debug=True, host="127.0.0.1", port=PORT)
